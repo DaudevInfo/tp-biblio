@@ -2,12 +2,11 @@ package bibliotheque;
 
 import jakarta.persistence.*;
 
-import javax.annotation.processing.Generated;
 import java.io.Serializable;
 
 @Entity
 @Table (name="livre")
-public class livre implements Serializable {
+public class Livre implements Serializable {
 
     @Id
     @Column (name = "ID")
@@ -20,10 +19,10 @@ public class livre implements Serializable {
     @Column (name = "AUTEUR", length = 50)
     private String auteur;
 
-    public livre() {
+    public Livre() {
     }
 
-    public livre(String titre, String auteur) {
+    public Livre(String titre, String auteur) {
         this.titre = titre;
         this.auteur = auteur;
     }
@@ -43,7 +42,7 @@ public class livre implements Serializable {
      * @param : id
      **/
 
-    public livre setId(int id) {
+    public Livre setId(int id) {
         this.id = id;
         return this;
     }
@@ -63,7 +62,7 @@ public class livre implements Serializable {
      * @param : titre
      **/
 
-    public livre setTitre(String titre) {
+    public Livre setTitre(String titre) {
         this.titre = titre;
         return this;
     }
@@ -83,17 +82,16 @@ public class livre implements Serializable {
      * @param : auteur
      **/
 
-    public livre setAuteur(String auteur) {
+    public Livre setAuteur(String auteur) {
         this.auteur = auteur;
         return this;
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("livre ");
-        sb.append("id=").append(id);
-        sb.append(", titre='").append(titre).append('\'');
-        sb.append(", auteur='").append(auteur).append('\'');
-        return sb.toString();
+        String sb = "livre " + "id=" + id +
+                ", titre='" + titre + '\'' +
+                ", auteur='" + auteur + '\'';
+        return sb;
     }
 }

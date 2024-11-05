@@ -1,8 +1,7 @@
 package org.example;
 
-import bibliotheque.Client;
 import bibliotheque.Emprunt;
-import bibliotheque.livre;
+import bibliotheque.Livre;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -20,7 +19,7 @@ public class Main {
 
         //Lecture d'un livre
         for (int i = 1; i <100 ; i++) {
-            livre livreLu = em.find(livre.class,i );
+            Livre livreLu = em.find(Livre.class,i );
             if (livreLu != null) {
                 System.out.println(livreLu);
             } else {

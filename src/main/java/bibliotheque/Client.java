@@ -110,12 +110,11 @@ public class Client implements Serializable {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("client{");
-        sb.append("id=").append(id);
-        sb.append(", nom='").append(nom).append('\'');
-        sb.append(", prenom='").append(prenom).append('\'');
-        sb.append('}');
-        return sb.toString();
+        String sb = "client{" + "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                '}';
+        return sb;
     }
 
     @Override

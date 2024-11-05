@@ -134,14 +134,13 @@ public class Emprunt implements Serializable {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("emprunt{");
-        sb.append("id=").append(id);
-        sb.append(", dateDebut=").append(dateDebut);
-        sb.append(", dateFin=").append(dateFin);
-        sb.append(", delai=").append(delai);
-        sb.append(", client=").append(client);
-        sb.append('}');
-        return sb.toString();
+        String sb = "emprunt{" + "id=" + id +
+                ", dateDebut=" + dateDebut +
+                ", dateFin=" + dateFin +
+                ", delai=" + delai +
+                ", client=" + client +
+                '}';
+        return sb;
     }
 
     @Override
