@@ -3,6 +3,7 @@ package bibliotheque;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table (name="livre")
@@ -18,6 +19,29 @@ public class Livre implements Serializable {
 
     @Column (name = "AUTEUR", length = 50)
     private String auteur;
+
+    @ManyToMany (mappedBy = "livres")
+    private Set<Emprunt> emprunts ;
+
+    /**
+     * Getter
+     *
+     * @return emprunts
+     **/
+    public Set<Emprunt> getEmprunts() {
+        return emprunts;
+    }
+
+    /**
+     * Setter
+     *
+     * @param : emprunts
+     **/
+
+    public Livre setEmprunts(Set<Emprunt> emprunts) {
+        this.emprunts = emprunts;
+        return this;
+    }
 
     public Livre() {
     }

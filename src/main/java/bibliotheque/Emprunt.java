@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name="emprunt")
@@ -28,6 +29,32 @@ public class Emprunt implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ID_CLIENT")
     private Client client;
+
+    @ManyToMany
+    @JoinTable(name = "compo",
+        joinColumns = @JoinColumn (name="ID_EMP", referencedColumnName = "ID"),
+        inverseJoinColumns = @JoinColumn(name="ID_LIV", referencedColumnName = "ID"))
+    private Set<Livre> livres;
+
+    /**
+     * Getter
+     *
+     * @return livres
+     **/
+    public Set<Livre> getLivres() {
+        return livres;
+    }
+
+    /**
+     * Setter
+     *
+     * @param : livres
+     **/
+
+    public Emprunt setLivres(Set<Livre> livres) {
+        this.livres = livres;
+        return this;
+    }
 
     public Emprunt() {
     }
@@ -134,13 +161,14 @@ public class Emprunt implements Serializable {
 
     @Override
     public String toString() {
-        String sb = "emprunt{" + "id=" + id +
-                ", dateDebut=" + dateDebut +
-                ", dateFin=" + dateFin +
-                ", delai=" + delai +
-                ", client=" + client +
-                '}';
-        return sb;
+        final StringBuilder sb = new StringBuilder("Emprunt{");
+        sb.append("client=").append(client);
+        sb.append(", delai=").append(delai);
+        sb.append(", dateFin=").append(dateFin);
+        sb.append(", dateDebut=").append(dateDebut);
+        sb.append(", id=").append(id);
+        sb.append('}');
+        return sb.toString();
     }
 
     @Override

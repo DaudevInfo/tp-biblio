@@ -17,11 +17,14 @@ public class Main {
         em = emf.createEntityManager();
         em.getTransaction().begin();
 
-        //Lecture d'un livre
+        //Lecture d'un livre et emprunt associé
         for (int i = 1; i <100 ; i++) {
             Livre livreLu = em.find(Livre.class,i );
             if (livreLu != null) {
                 System.out.println(livreLu);
+                for (Emprunt e : livreLu.getEmprunts()) {
+                    System.out.println(e);
+                }
             } else {
                 break;
             }
@@ -33,10 +36,16 @@ public class Main {
             Emprunt empruntlu = em.find(Emprunt.class,i );
             if (empruntlu != null) {
                 System.out.println(empruntlu);
+                for (Livre l : empruntlu.getLivres()) {
+                    System.out.println(l);
+                }
+
             } else {
                 break;
             }
         }
+
+
 
         em.getTransaction().commit();
         em.close();
