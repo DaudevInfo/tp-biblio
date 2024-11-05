@@ -1,22 +1,23 @@
 package bibliotheque;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import javax.annotation.processing.Generated;
+import java.io.Serializable;
 
 @Entity
 @Table (name="livre")
-public class livre {
+public class livre implements Serializable {
 
     @Id
     @Column (name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column (name = "TITRE")
     private String titre;
 
-    @Column (name = "AUTEUR")
+    @Column (name = "AUTEUR", length = 50)
     private String auteur;
 
     public livre() {

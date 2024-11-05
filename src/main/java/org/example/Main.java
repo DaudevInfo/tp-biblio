@@ -1,5 +1,7 @@
 package org.example;
 
+import bibliotheque.Client;
+import bibliotheque.Emprunt;
 import bibliotheque.livre;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -26,6 +28,17 @@ public class Main {
             }
 
         }
+
+
+        for (int i = 1; i <100 ; i++) {
+            Emprunt empruntlu = em.find(Emprunt.class,i );
+            if (empruntlu != null) {
+                System.out.println(empruntlu);
+            } else {
+                break;
+            }
+        }
+
         em.getTransaction().commit();
         em.close();
         emf.close();
